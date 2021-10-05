@@ -1,0 +1,34 @@
+<header>
+  <span>Earthquakes analytics</span>
+</header>
+<section class="title">
+  <div class="timeline-container">
+    <div class="widget-header">Timeline</div>
+    <div class="timeline" (timeRange)="filter($event)" appTimeline [data]="data"></div>
+  </div>
+  <div class="table-container">
+    <div class="widget-header">Earthquekes info</div>
+    <table id="example" class="table table-striped" style="width:100%">
+      <thead>
+      <tr>
+        <th>Place</th>
+        <th>Magnitude</th>
+        <th>Depth</th>
+        <th>Distance</th>
+        <th>Time</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of data | filterTime:timeStart:timeEnd;">
+        <td>{{item.place}}</td>
+        <td>{{item.magnitude}} mmw</td>
+        <td>{{item.depth}} km</td>
+        <td>{{item.distance}} km</td>
+        <td>{{item.time | date:"dd/MM/yy"}}</td>
+      </tr>
+      </tbody>
+      <tfoot>
+      </tfoot>
+    </table>
+  </div>
+</section>
